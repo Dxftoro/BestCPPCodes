@@ -111,7 +111,7 @@ int main() { //мейн... -_-
 
 	//transform(orig_t.begin(), orig_t.end(), orig_t.begin(), ::tolower);
 	tran_t = transliter(orig_t);
-	cout << "Transliterating the file: " << endl << endl << tran_t << endl << endl; //выводи результат в консоль
+	cout << "Transliterating the file: " << endl << endl << tran_t << endl << endl; //выводим результат в консоль
 	fout << tran_t; //выводим результат в файл
 
 	//закрываем файлы в обязательном порядке!

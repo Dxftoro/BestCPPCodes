@@ -3,7 +3,7 @@
 
 using namespace std;
 
-long long int** MatCreate(int size) { //выделение памяти под матрицу
+long long int** MatCreate(int size) { //ГўГ»Г¤ГҐГ«ГҐГ­ГЁГҐ ГЇГ Г¬ГїГІГЁ ГЇГ®Г¤ Г¬Г ГІГ°ГЁГ¶Гі
 	long long int** mat = new long long int* [size];
 
 	for (int i = 0; i < size; i++) {
@@ -13,50 +13,50 @@ long long int** MatCreate(int size) { //выделение памяти под матрицу
 	return mat;
 }
 
-void MatFree(long long int** mat, int size) { //освобождение памяти, выделенной под матрицу
+void MatFree(long long int** mat, int size) { //Г®Г±ГўГ®ГЎГ®Г¦Г¤ГҐГ­ГЁГҐ ГЇГ Г¬ГїГІГЁ, ГўГ»Г¤ГҐГ«ГҐГ­Г­Г®Г© ГЇГ®Г¤ Г¬Г ГІГ°ГЁГ¶Гі
 	for (int i = 0; i < size; i++) delete[] mat[i];
 	delete[] mat;
 }
 
-long long int* VecCreate(int size) { //выделение памяти под вектор
+long long int* VecCreate(int size) { //ГўГ»Г¤ГҐГ«ГҐГ­ГЁГҐ ГЇГ Г¬ГїГІГЁ ГЇГ®Г¤ ГўГҐГЄГІГ®Г°
 	long long int* vec = new long long int[size];
 	return vec;
 }
 
-void VecFree(long long int* vec) { //освобождение памяти, выделенной под вектор
+void VecFree(long long int* vec) { //Г®Г±ГўГ®ГЎГ®Г¦Г¤ГҐГ­ГЁГҐ ГЇГ Г¬ГїГІГЁ, ГўГ»Г¤ГҐГ«ГҐГ­Г­Г®Г© ГЇГ®Г¤ ГўГҐГЄГІГ®Г°
 	delete[] vec;
 }
 
-void VecRfill(long long int* vec, int size, long long int a = 5, long long int b = 20) { //заполнние вектора случайными числами
+void VecRfill(long long int* vec, int size, long long int a = 5, long long int b = 20) { //Г§Г ГЇГ®Г«Г­Г­ГЁГҐ ГўГҐГЄГІГ®Г°Г  Г±Г«ГіГ·Г Г©Г­Г»Г¬ГЁ Г·ГЁГ±Г«Г Г¬ГЁ
 	for (int i = 0; i < size; i++) {
 		vec[i] = a + rand() % b;
 	}
 }
 
-void MatRfill(long long int** mat, int size, int a = 1, int b = 20) { //заполнение матрицы случайными числами
+void MatRfill(long long int** mat, int size, long long int a = 1, long long int b = 20) { //Г§Г ГЇГ®Г«Г­ГҐГ­ГЁГҐ Г¬Г ГІГ°ГЁГ¶Г» Г±Г«ГіГ·Г Г©Г­Г»Г¬ГЁ Г·ГЁГ±Г«Г Г¬ГЁ
 	for (int i = 0; i < size; i++) {
 		for (int j = 0; j < size; j++) mat[i][j] = a + rand() % b;
 	}
 }
 
-void VecFill(long long int* vec, int size, long long int val) { //заполнение вектора заданным значением
+void VecFill(long long int* vec, int size, long long int val) { //Г§Г ГЇГ®Г«Г­ГҐГ­ГЁГҐ ГўГҐГЄГІГ®Г°Г  Г§Г Г¤Г Г­Г­Г»Г¬ Г§Г­Г Г·ГҐГ­ГЁГҐГ¬
 	for (int i = 0; i < size; i++) vec[i] = val;
 }
 
-void MatFill(long long int** mat, int size, long long int val) { //заполнение матрицы заданным значением
+void MatFill(long long int** mat, int size, long long int val) { //Г§Г ГЇГ®Г«Г­ГҐГ­ГЁГҐ Г¬Г ГІГ°ГЁГ¶Г» Г§Г Г¤Г Г­Г­Г»Г¬ Г§Г­Г Г·ГҐГ­ГЁГҐГ¬
 	for (int i = 0; i < size; i++) {
 		for (int j = 0; j < size; j++) mat[i][j] = val;
 	}
 }
 
-void VecOut(long long int* vec, int size, char end = '\n') { //вывод вектора в консоль
+void VecOut(long long int* vec, int size, char end = '\n') { //ГўГ»ГўГ®Г¤ ГўГҐГЄГІГ®Г°Г  Гў ГЄГ®Г­Г±Г®Г«Гј
 	for (int i = 0; i < size; i++) {
 		cout << vec[i] << " ";
 	}
 	cout << end;
 }
 
-void MatOut(long long int** mat, int size, char end = '\n') { //вывод матрицы в консоль
+void MatOut(long long int** mat, int size, char end = '\n') { //ГўГ»ГўГ®Г¤ Г¬Г ГІГ°ГЁГ¶Г» Гў ГЄГ®Г­Г±Г®Г«Гј
 	for (int i = 0; i < size; i++) {
 		for (int j = 0; j < size; j++) cout << mat[i][j] << " ";
 		cout << endl;

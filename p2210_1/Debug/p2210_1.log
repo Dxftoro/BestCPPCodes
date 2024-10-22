@@ -1,0 +1,18 @@
+﻿  Source.cpp
+C:\Users\s0188236\source\repos\p2210_1\p2210_1\visualray.h(201,45): warning C4305: аргумент: усечение из "double" в "float"
+C:\Users\s0188236\source\repos\p2210_1\p2210_1\visualray.h(215,49): warning C4305: аргумент: усечение из "double" в "float"
+C:\Users\s0188236\source\repos\p2210_1\p2210_1\visualray.h(134,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\s0188236\source\repos\p2210_1\p2210_1\visualray.h(135,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\s0188236\source\repos\p2210_1\p2210_1\visualray.h(164,23): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+C:\Users\s0188236\source\repos\p2210_1\p2210_1\visualray.h(165,24): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+C:\Users\s0188236\source\repos\p2210_1\p2210_1\visualray.h(202,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\s0188236\source\repos\p2210_1\p2210_1\visualray.h(203,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\s0188236\source\repos\p2210_1\p2210_1\visualray.h(216,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\s0188236\source\repos\p2210_1\p2210_1\visualray.h(217,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\s0188236\source\repos\p2210_1\p2210_1\visualray.h(229,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\s0188236\source\repos\p2210_1\p2210_1\visualray.h(230,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\s0188236\source\repos\p2210_1\p2210_1\visualray.h(245,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\s0188236\source\repos\p2210_1\p2210_1\visualray.h(246,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\s0188236\source\repos\p2210_1\p2210_1\visualray.h(261,16): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+C:\Users\s0188236\source\repos\p2210_1\p2210_1\Source.cpp(23,14): warning C4305: +=: усечение из "double" в "float"
+  p2210_1.vcxproj -> C:\Users\s0188236\source\repos\p2210_1\Debug\p2210_1.exe

@@ -1,11 +1,12 @@
 //GitHub: https://github.com/Dxftoro
 #pragma once
-#include<iostream>
-#include<Windows.h>
-#include<string>
-#include<cstdlib>
-#include<stdlib.h>
-#include<fstream>
+#include <iostream>
+#include <Windows.h>
+#include <string>
+#include <cstdlib>
+#include <stdlib.h>
+#include <cmath>
+#include <fstream>
 //#include "colors.h"
 
 //двумерный вектор
@@ -28,6 +29,7 @@ struct vec2 {
 	vec2 operator /= (vec2 const& b) { return vec2(x / b.x, y / b.y); }
 
 	float length() { return sqrt(x * x + y * y); }
+	float distance(vec2 b) { return sqrt(pow(b.x - x, 2) + pow(b.y - y, 2)); }
 };
 //трёхмерный вектор
 struct vec3 {
@@ -50,6 +52,7 @@ struct vec3 {
 	vec3 operator /= (vec3 const& b) { return vec3(x / b.x, y / b.y, z / b.z); }
 
 	float length() { return sqrt(x * x + y * y + z * z); }
+	float distance(vec3 b) { return sqrt(pow(b.x - x, 2) + pow(b.y - y, 2) + pow(b.z - z, 2)); }
 };
 
 int clamp(int x, int inf, int sup) {
@@ -66,9 +69,12 @@ float clamp(float x, float inf, float sup) {
 }
 
 float length(vec2 a) { return sqrt(a.x * a.x + a.y * a.y); }
+float distance(vec2 a, vec2 b) { return sqrt( pow(b.x - a.x, 2) + pow(b.y - a.y, 2) ); }
 vec2 normalise(vec2 a) { return a / length(a); }
 
 float length(vec3 a) { return sqrt(a.x * a.x + a.y * a.y + a.z * a.z); }
+float distance(vec3 a, vec3 b) { return sqrt( pow(b.x - a.x, 2) + pow(b.y - a.y, 2) + pow(b.z - a.z, 2) ); }
+
 vec3 normalise(vec3 a) { return a / length(a); }
 float con(vec3 const& a, vec3 const& b) { return a.x * b.x + a.y * b.y + a.z * b.z; }
 
@@ -150,10 +156,9 @@ public:
 		delete[] buff;
 	}
 
-	void setScreenSize(int new_width, int new_height) { //NOT STABLE!!!
+	void setScreenSize(int new_width, int new_height) {
 		this->width = new_width;
 		this->height = new_height;
-		this->screen_scale = (float)width / height;
 
 		this->buff = new char[new_width * new_height + 1];
 		buff[new_width * new_height] = '\0';

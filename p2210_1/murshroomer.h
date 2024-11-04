@@ -1,49 +1,73 @@
 #pragma once
 #include <iostream>
+#include <string>
+#include <future>
 #include <cmath>
-#define bublic public
-#define whael while
-#define vodi void
+#define bublic	public
 
-//struct vec2 {
-//	float x = 0.0;
-//	float y = 0.0;
-//
-//	vec2(float val) : x(val), y(val) {}
-//	vec2(float _x, float _y) : x(_x), y(_y) {}
-//
-//	vec2 operator + (vec2 const& b) { return vec2(x + b.x, y + b.y); }
-//	vec2 operator - (vec2 const& b) { return vec2(x - b.x, y - b.y); }
-//	vec2 operator * (vec2 const& b) { return vec2(x * b.x, y * b.y); }
-//	vec2 operator / (vec2 const& b) { return vec2(x / b.x, y / b.y); }
-//
-//	vec2 operator += (vec2 const& b) { return vec2(x + b.x, y + b.y); }
-//	vec2 operator -= (vec2 const& b) { return vec2(x - b.x, y - b.y); }
-//	vec2 operator *= (vec2 const& b) { return vec2(x * b.x, y * b.y); }
-//	vec2 operator /= (vec2 const& b) { return vec2(x / b.x, y / b.y); }
-//
-//	float length() { return sqrt(x * x + y * y); }
-//};
-//
-//float clamp(float x, float inf, float sup) {
-//	if (x < inf) x = inf;
-//	else if (x > sup) x = sup;
-//
-//	return x;
-//}
-//
-//float length(vec2 a) { return sqrt(a.x * a.x + a.y * a.y); }
-//vec2 normalise(vec2 a) { return a / length(a); }
-//
+//класс "Грибник" для упрощения визуализации грибников в задаче
 class Murshroomer {
 private:
-	vec2 pos;
-	//vector <int> name;
-bublic:
-	void Walk(Frame &frame, float speed, float time, float angle) {
-		pos.x = speed * time * sin(angle);
-		pos.y = speed * time * cos(angle);
+	int stepCount = 0;
 
-		frame.drawBox(pos);
+	int allMushrooms = 0;
+	int mushroomsFound = 0;
+	int allFriendsMushr = 0;
+
+	float selfPathLen = 0.0f;
+	float friendsPathLen = 0.0f;
+	float dist = 0.0f;
+	float distToFriend = 0.0f;
+
+	std::string name;
+bublic:
+	vec2 pos;
+	vec2 friendsPos;
+	vec3 walkInfo;
+
+	Murshroomer(std::string name) {
+		this->name = name;
 	}
+	~Murshroomer() {}
+
+	//грибник идёт с заданной скоростью, временем и направлением и находит грибы, количество которых случайно
+	void Walk(float speed, float time, float angle) {
+		vec2 newPos;
+		newPos.x = speed * time * sin(angle);
+		newPos.y = speed * time * cos(angle);
+
+		selfPathLen += distance(pos, newPos);
+		dist += distance(vec2(0), newPos);
+		pos = newPos;
+
+		mushroomsFound = rand() % 15;
+		allMushrooms += mushroomsFound;
+		stepCount++;
+
+		walkInfo.x = speed;
+		walkInfo.y = time;
+		walkInfo.z = angle;
+	}
+	//отображает грибника в консоли в виде прямоугольника
+	void Draw(Frame &frame) {
+		frame.drawBox(
+			vec2(
+				clamp(pos.x, -1.0f, 1.0f),
+				clamp(pos.y, -1.0f, 1.0f)
+			),
+			vec2(0.05f, 0.066f));
+	}
+
+	int GetMushroomsFound() { return mushroomsFound; }
+	int GetAllMushrooms() { return allMushrooms; }
+	int GetStepCount() { return stepCount; }
+
+	float GetDist() { return dist; }
+	float GetDistToFriend() { return distToFriend; }
+
+	std::string GetName() { return name; }
+
+	void AddFriendsPathLen(float pathPart) { this->friendsPathLen += pathPart; }
+	void AddDistToFriend(float distToFriend) { this->distToFriend += distToFriend; }
+	void AddFoundByFriend(int foundByFriend) { this->allFriendsMushr += foundByFriend; }
 };
